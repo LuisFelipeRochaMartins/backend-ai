@@ -6,7 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public record DestinoUpdateRecord(@NotNull Integer id,
-                                  @NotBlank String foto,
-                                  @NotBlank String nome,
-                                  @NotNull BigDecimal preco) {
+                                  String foto,
+                                  String nome,
+								  String descricao,
+								  String meta,
+                                  BigDecimal preco) {
 }

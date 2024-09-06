@@ -15,10 +15,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class DestinoController {
 
 	private final DestinoRepository repository;
+	private final DestinoService service;
 
 	@Autowired
-	public DestinoController(DestinoRepository repository) {
+	public DestinoController(DestinoRepository repository, DestinoService service) {
 		this.repository = repository;
+		this.service = service;
 	}
 
 	@GetMapping(path = "/{nome}")
@@ -37,8 +39,7 @@ public class DestinoController {
 
 	@PostMapping
 	public ResponseEntity<DestinoRecord> insert(@RequestBody DestinoRecord record, UriComponentsBuilder uriBuilder) {
-		var destino = repository.save(new Destino(record));
-
+		var destino = service.insert(record);
 		var uri = uriBuilder.path("/destinos/{id}").buildAndExpand(destino.getId()).toUri();
 
 		return ResponseEntity.created(uri).body(new DestinoRecord(destino));

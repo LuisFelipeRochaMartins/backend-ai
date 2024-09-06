@@ -13,14 +13,18 @@ public class Destino {
 	private Integer id;
 	private String foto;
 	private String nome;
+	private String meta;
+	private String descricao;
 	private BigDecimal preco;
 
 	public Destino() {}
 
-	public Destino(String foto, String nome, BigDecimal preco) {
+	public Destino(String foto, String nome, String meta, String descricao, BigDecimal preco) {
 		this.foto = foto;
 		this.nome = nome;
 		this.preco = preco;
+		this.descricao = descricao;
+		this.meta = meta;
 	}
 
 	public Destino(DestinoRecord record) {
@@ -59,6 +63,22 @@ public class Destino {
 
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
+	}
+
+	public String getMeta() {
+		return meta;
+	}
+
+	public void setMeta(String meta) {
+		this.meta = meta;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public void update(DestinoUpdateRecord record) {
